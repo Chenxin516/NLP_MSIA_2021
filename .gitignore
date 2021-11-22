@@ -24,5 +24,6 @@ dist/
 Thumbs.db
 
 # Data
-data/
+data/raw
+data/jigsaw-unintended-bias-in-toxicity-classification.zip
 !.gitkeep
