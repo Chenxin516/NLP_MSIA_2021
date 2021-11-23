@@ -84,3 +84,18 @@ def get_final_metric(bias_df, overall_auc, POWER=-5, OVERALL_MODEL_WEIGHT=0.25):
     return (OVERALL_MODEL_WEIGHT * overall_auc) + (
         (1 - OVERALL_MODEL_WEIGHT) * bias_score
     )
+
+
+def evaluate_model(df: pd.DataFrame, label_col: str = "label") -> pd.DataFrame:
+    y_true = df[label_col].values
+    y_pred = df["y_pred"].values
+    y_proba = df["y_pred_proba"].values
+
+    acc = metrics.accuracy_score(y_true, y_pred)
+    f1 = metrics.f1_score(y_true, y_pred)
+    auc_roc = metrics.roc_auc_score(y_true, y_proba)
+
+    df_result = pd.DataFrame(
+        {"metrics": ["accuracy", "f1", "auc_roc"], "value": [acc, f1, auc_roc]}
+    )
+    return df_result
