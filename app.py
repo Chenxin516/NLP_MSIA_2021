@@ -28,7 +28,7 @@ def load_model():
 
     tokenizer = AutoTokenizer.from_pretrained("distilbert-base-uncased")
     model_bert = AutoModelForSequenceClassification.from_pretrained(
-        "models/transformer_models/checkpoint-27075"
+        "martin-ha/toxic-comment-model"
     )
 
     return preprocessor_logit, model_logit, model_fasttext, tokenizer, model_bert
@@ -67,10 +67,6 @@ elif model_option == "FastText":
 else:
     pred_prob = predictor(text_input)[0]
     pred = np.argmax(pred_prob)
-    explainer = LimeTextExplainer(class_names=["non-toxic", "toxic"])
-    exp = explainer.explain_instance(
-        text_input, predictor, num_features=20, num_samples=200
-    )
 
 
 if st.button(label="Make Prediction"):
@@ -87,6 +83,10 @@ if st.button(label="Make Prediction"):
     fig.update_traces(width=0.2, texttemplate="%{text:.3f}", textposition="outside")
     st.write(f"Prediction: {result_dict[pred]}")
     if model_option == "DistilBERT":
+        explainer = LimeTextExplainer(class_names=["non-toxic", "toxic"])
+        exp = explainer.explain_instance(
+            text_input, predictor, num_features=20, num_samples=200
+        )
         components.html(exp.as_html(), height=500, scrolling=True)
     else:
         st.plotly_chart(fig)
