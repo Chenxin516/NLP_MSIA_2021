@@ -11,6 +11,11 @@ from transformers import AutoModelForSequenceClassification, AutoTokenizer
 from lime.lime_text import LimeTextExplainer
 
 
+st.sidebar.info(
+    " View [source code] (https://github.com/MSIA/wenyang_pan_nlp_project_2021)"
+    " and learn more about the [DistilBERT model] (https://huggingface.co/martin-ha/toxic-comment-model)"
+)
+
 st.title("Toxic Comment Classifier")
 
 # Load Model
@@ -49,7 +54,10 @@ model_option = st.selectbox(
     ("DistilBERT", "Logistic Regression", "FastText"),
 )
 
-text_input = st.text_input(label="Input Text")
+text_input = st.text_input(
+    label="Input Text",
+    value="What if his opinion is that most other commenters are idiots? :-)",
+)
 result_dict = {0: "non-toxic", 1: "toxic"}
 
 if model_option == "Logistic Regression":
