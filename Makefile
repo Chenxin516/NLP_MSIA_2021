@@ -1,4 +1,11 @@
-.PHONY: train-prepare test-prepare bow-prepare fasttext-prepare
+.PHONY: raw-get train-prepare test-prepare bow-prepare fasttext-prepare
+
+data/raw:
+
+raw-get: data/raw/
+	kaggle competitions download -c jigsaw-unintended-bias-in-toxicity-classification
+	mv jigsaw-unintended-bias-in-toxicity-classification.zip data/
+	unzip data/jigsaw-unintended-bias-in-toxicity-classification.zip -d data/raw/
 
 data/interim/train.parquet: run.py data/raw/train.csv
 	python run.py preprocess-train
