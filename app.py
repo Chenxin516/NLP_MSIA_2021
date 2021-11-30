@@ -46,7 +46,7 @@ def predictor(texts):
 
 model_option = st.selectbox(
     "Which model do you want to use?",
-    ("Logistic Regression", "FastText", "DistilBERT"),
+    ("DistilBERT", "Logistic Regression", "FastText"),
 )
 
 text_input = st.text_input(label="Input Text")
@@ -70,23 +70,31 @@ else:
 
 
 if st.button(label="Make Prediction"):
-    df_pred = pd.DataFrame({"name": ["non-toxic", "toxic"], "pred_prob": pred_prob})
-    fig = px.bar(df_pred, x="pred_prob", y="name", text="pred_prob", orientation="h")
-    fig.update_layout(
-        autosize=False,
-        width=700,
-        height=150,
-        margin=dict(l=0, r=0, b=0, t=0),
-        yaxis={"title": ""},
-        xaxis={"visible": False},
-    )
-    fig.update_traces(width=0.2, texttemplate="%{text:.3f}", textposition="outside")
-    st.write(f"Prediction: {result_dict[pred]}")
-    if model_option == "DistilBERT":
-        explainer = LimeTextExplainer(class_names=["non-toxic", "toxic"])
-        exp = explainer.explain_instance(
-            text_input, predictor, num_features=20, num_samples=200
+    if text_input != "":
+        df_pred = pd.DataFrame({"name": ["non-toxic", "toxic"], "pred_prob": pred_prob})
+        fig = px.bar(
+            df_pred, x="pred_prob", y="name", text="pred_prob", orientation="h"
         )
-        components.html(exp.as_html(), height=500, scrolling=True)
+        fig.update_layout(
+            autosize=False,
+            width=700,
+            height=150,
+            margin=dict(l=0, r=0, b=0, t=0),
+            yaxis={"title": ""},
+            xaxis={"visible": False},
+        )
+        fig.update_traces(width=0.2, texttemplate="%{text:.3f}", textposition="outside")
+        st.write(f"Prediction: {result_dict[pred]}")
+        if model_option == "DistilBERT":
+            with st.spinner(
+                "We are also trying to explain the prediciton. This can take a while. Don't leave :)"
+            ):
+                explainer = LimeTextExplainer(class_names=["non-toxic", "toxic"])
+                exp = explainer.explain_instance(
+                    text_input, predictor, num_features=20, num_samples=200
+                )
+            components.html(exp.as_html(), height=500, scrolling=True)
+        else:
+            st.plotly_chart(fig)
     else:
-        st.plotly_chart(fig)
+        st.write("Your input is empty. Try to type something.")
