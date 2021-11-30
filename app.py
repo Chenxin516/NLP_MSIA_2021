@@ -21,7 +21,7 @@ st.title("Toxic Comment Classifier")
 st.markdown(
     """
 We provide some other sample setences here for you to see the behavior of the model.
-+ Sample Setence 1: This is some beautiful. Thank you so much for this great work!
++ Sample Setence 1: This is so beautiful. Thank you so much for this great work!
 + Sample Setence 2: Muslims are people who follow or practice Islam, an Abrahamic monotheistic religion.
 
 Note that sample setence 2 will show a biased behavior for the DistilBERT model 
