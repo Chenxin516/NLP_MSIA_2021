@@ -12,9 +12,6 @@ model_path = "martin-ha/toxic-comment-model"
 tokenizer = AutoTokenizer.from_pretrained(model_path)
 model = AutoModelForSequenceClassification.from_pretrained(model_path)
 
-model.config.id2label = {0: "normal", 1: "toxic"}
-model.config.label2id = {"normal": 0, "toxic": 1}
-
 pipeline =  TextClassificationPipeline(model=model, tokenizer=tokenizer)
 print(pipeline('This is a test text.'))
 ```
