@@ -33,7 +33,7 @@ You can exit the poetry shell by typing `exit` in the command line.
 If you want to use command line to interact with Kaggle like we describe below, you need to set up the API token with instructions [here](https://www.kaggle.com/docs/api#authentication).
 
 ### HuggingFace Hub :hugs:
-We store one of our model (DistilBERT) in HuggingFace Hub to allow our app to download and use the model. You can create a huggingface account [here] and authenticate in your local machine with the followign command.
+We store one of our model (DistilBERT) in HuggingFace Hub to allow our app to download and use the model. You can create a huggingface account [here](https://huggingface.co/welcome) and authenticate in your local machine with the followign command.
 ```
 huggingface-cli login
 ```
