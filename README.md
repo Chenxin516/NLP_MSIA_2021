@@ -8,7 +8,9 @@ This project aims to achieve two goals:
 You can read more about this proejct in our [paper](https://github.com/MSIA/wenyang_pan_nlp_project_2021/blob/main/papers/NLP_Final_Report.pdf).
 
 ## Web App :rocket:
-To get a quick feeling about what the models in this project can and can't accomplish, you can visit [this app](https://share.streamlit.io/msia/wenyang_pan_nlp_project_2021/main/app.py) and play with it!
+To get a quick feeling about what the models in this project can and can't accomplish, you can visit [this app](https://share.streamlit.io/msia/wenyang_pan_nlp_project_2021/main/app.py) and play with it! 
+
+One more thing, you can also see the documentation and play with our best performing model [here](https://huggingface.co/martin-ha/toxic-comment-model) in the huggingface hub. 
 
 ## Setup
 
