@@ -87,7 +87,7 @@ The actual training for the model will require a GPU. We will Kaggle for this pr
 `06_share_transformer_models.ipynb` show how to push the model in huggingface hub, given you finish the huggingface hub section above. You can learn more the hub [here](https://huggingface.co/course/chapter4/1?fw=pt). You can see our trained model in the hub from [this link](https://huggingface.co/martin-ha/toxic-comment-model).
 
 ## App Development 
-We develop the web by using the [streamlit library](https://docs.streamlit.io/). The code for the app is in `app.py`. You can launch the web locally running the following command.
+We develop the web app by using the [streamlit library](https://docs.streamlit.io/). The code for the app is in `app.py`. You can launch the web locally running the following command.
 ```
 streamlit run app.py
 ```
