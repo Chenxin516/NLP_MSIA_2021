@@ -23,17 +23,17 @@ print(pipeline('This is a test text.'))
 
 This model is intended to use for classify toxic online classifications. However, one limitation of the model is that it performs poorly for some comments that mention a specific identity subgroup, like Muslim. The following table shows a evaluation score for different identity group. You can learn the specific meaning of this metrics [here](https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification/overview/evaluation). But basically, those metrics shows how well a model performs for a specific group. The larger the number, the better.
 
-| **subgroup**                  | **subgroup_size** | **subgroup_auc**   | **bpsn_auc**       | **bnsp_auc**       |
-| ----------------------------- | ----------------- | ------------------ | ------------------ | ------------------ |
-| muslim                        | 108               | 0.6889880952380950 | 0.8112554112554110 | 0.8800518892055840 |
-| jewish                        | 40                | 0.7489177489177490 | 0.8595356359015830 | 0.8250611265982460 |
-| homosexual_gay_or_lesbian     | 56                | 0.7953125          | 0.7061053984575840 | 0.9722888937377260 |
-| black                         | 84                | 0.8658307210031350 | 0.7582412358882950 | 0.9754200596128560 |
-| white                         | 112               | 0.87578125         | 0.7843339895013120 | 0.9701402586017970 |
-| female                        | 306               | 0.8982545764154960 | 0.886766007294528  | 0.9482218495745610 |
-| christian                     | 231               | 0.9040551839464880 | 0.9168973860121720 | 0.9300520888699900 |
-| male                          | 225               | 0.9216823785351700 | 0.8621754516176060 | 0.967060717060717  |
-| psychiatric_or_mental_illness | 26                | 0.9236111111111110 | 0.9067005937234950 | 0.9500707444492820 |
+| **subgroup**                  | **subgroup_size** | **subgroup_auc** | **bpsn_auc** | **bnsp_auc** |
+| ----------------------------- | ----------------- | ---------------- | ------------ | ------------ |
+| muslim                        | 108               | 0.689            | 0.811        | 0.88         |
+| jewish                        | 40                | 0.749            | 0.86         | 0.825        |
+| homosexual_gay_or_lesbian     | 56                | 0.795            | 0.706        | 0.972        |
+| black                         | 84                | 0.866            | 0.758        | 0.975        |
+| white                         | 112               | 0.876            | 0.784        | 0.97         |
+| female                        | 306               | 0.898            | 0.887        | 0.948        |
+| christian                     | 231               | 0.904            | 0.917        | 0.93         |
+| male                          | 225               | 0.922            | 0.862        | 0.967        |
+| psychiatric_or_mental_illness | 26                | 0.924            | 0.907        | 0.95         |
 
 The table above shows that the model performs poorly for the muslim and jewish group. In fact, you pass the sentence "Muslims are people who follow or practice Islam, an Abrahamic monotheistic religion." Into the model, the model will classify it as toxic. Be mindful for this type of potential bias.
 
