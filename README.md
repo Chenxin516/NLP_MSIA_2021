@@ -1,4 +1,4 @@
-# wenyang_pan_nlp_project_2021
+# nlp_project_2021
 
 ## Project Charter 
 This project aims to achieve two goals:
